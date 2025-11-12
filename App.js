@@ -1,8 +1,10 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image, View, TextInput, Text } from 'react-native';
+import { View, TextInput, Text } from 'react-native';
 import { useState } from 'react';
 import CustomButton from './components/Buttons/Button';
+import Logo from './components/Logo/Logo';
+import Heading from './components/Texts/Text';
 function App() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -22,7 +24,6 @@ function App() {
 
       const data = await res.json();
       console.log('Response from server:', data);
-      setResponse(`User ${data.username} added successfully!`);
     } catch (error) {
       console.error('Error sending data:', error);
       setResponse('Error sending data');
@@ -31,17 +32,7 @@ function App() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#363333ff' }}>
-      <Image
-        resizeMode="contain"
-        source={require('./assets/images/CarBM.png')}
-        style={{
-          width: 300,
-          height: 250,
-          alignSelf: 'center',
-          marginTop: 30,
-          // backgroundColor: '#22321f',
-        }}
-      ></Image>
+      <Logo />
       <View
         style={{
           flexDirection: 'row',
@@ -49,39 +40,9 @@ function App() {
           marginTop: 30,
         }}
       >
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 44,
-            fontWeight: 'bold',
-            fontStyle: 'italic',
-            color: '#E7222E',
-          }}
-        >
-          B
-        </Text>
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 44,
-            fontWeight: 'bold',
-            fontStyle: 'italic',
-            color: '#16588E',
-          }}
-        >
-          M
-        </Text>
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 44,
-            fontWeight: 'bold',
-            fontStyle: 'italic',
-            color: '#81C4FF',
-          }}
-        >
-          W
-        </Text>
+        <Heading letter="B" color="#E7222E" />
+        <Heading letter="M" color="#16588E" />
+        <Heading letter="W" color="#81C4FF" />
       </View>
       <View style={{ alignItems: 'center', marginTop: 20 }}>
         <Text style={{ color: 'white', fontSize: 16, fontStyle: 'italic' }}>
