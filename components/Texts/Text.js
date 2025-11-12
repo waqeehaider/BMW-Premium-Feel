@@ -1,7 +1,9 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import { useState } from 'react';
 
-const Heading = ({ letter, color }) => {
+// Reusable Heading component
+export const Heading = ({ letter, color }) => {
   return (
     <Text
       style={{
@@ -16,4 +18,13 @@ const Heading = ({ letter, color }) => {
   );
 };
 
-export default Heading;
+// Title component
+export const Title = () => {
+  return (
+    <View style={{ alignItems: 'center', marginTop: 20 }}>
+      <Text style={{ color: 'white', fontSize: 16, fontStyle: 'italic' }}>
+        Gives A High-Tech, Premium Feel.
+      </Text>
+    </View>
+  );
+};

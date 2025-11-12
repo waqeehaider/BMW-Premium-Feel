@@ -4,7 +4,8 @@ import { View, TextInput, Text } from 'react-native';
 import { useState } from 'react';
 import CustomButton from './components/Buttons/Button';
 import Logo from './components/Logo/Logo';
-import Heading from './components/Texts/Text';
+import { Heading, Title } from './components/Texts/Text';
+import TextField from './components/TextField/TextField';
 function App() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -44,11 +45,7 @@ function App() {
         <Heading letter="M" color="#16588E" />
         <Heading letter="W" color="#81C4FF" />
       </View>
-      <View style={{ alignItems: 'center', marginTop: 20 }}>
-        <Text style={{ color: 'white', fontSize: 16, fontStyle: 'italic' }}>
-          Gives A High-Tech, Premium Feel.
-        </Text>
-      </View>
+      <Title />
       <View style={{ marginTop: 20 }}>
         <TextInput
           style={{
