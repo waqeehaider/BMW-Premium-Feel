@@ -5,10 +5,10 @@ const Logo = () => {
   return (
     <Image
       resizeMode="contain"
-      source={require('../../assets/images/CarBM.png')}
+      source={require('../../assets/images/carbody.png')}
       style={{
-        width: 300,
-        height: 250,
+        width: 700,
+        height: 300,
         alignSelf: 'center',
         marginTop: 30,
       }}

@@ -9,7 +9,7 @@ import TextField from './components/TextField/TextField';
 function App() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-
+  const [autoFocus, setAutoFocus] = useState(false);
   const [response, setResponse] = useState('');
 
   const sendUsername = async () => {
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#363333ff' }}>
-      <Logo />
+      {!autoFocus && <Logo />}
       <View
         style={{
           flexDirection: 'row',
@@ -63,7 +63,8 @@ function App() {
             setName(value);
             // console.log(value);
           }}
-          autoFocus={true}
+          onFocus={() => setAutoFocus(true)} // Hide logo when focused
+          onBlur={() => setAutoFocus(false)}
           placeholder="user name"
         ></TextInput>
         <TextInput
@@ -83,7 +84,8 @@ function App() {
             // console.log(value);
           }}
           secureTextEntry={true}
-          // autoFocus={true}
+          onFocus={() => setAutoFocus(true)} // Hide logo when focused
+          onBlur={() => setAutoFocus(false)}
           placeholder="Password"
         ></TextInput>
       </View>
