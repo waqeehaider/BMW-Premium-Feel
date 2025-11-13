@@ -1,30 +1,24 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { View, TextInput, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { useState } from 'react';
 import CustomButton from './components/Buttons/Button';
 import Logo from './components/Logo/Logo';
 import { Heading, Title } from './components/Texts/Text';
 import TextField from './components/TextField/TextField';
+import { sendUsername } from './API_DATA/MockData/Post';
 function App() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [autoFocus, setAutoFocus] = useState(false);
   const [response, setResponse] = useState('');
 
-  const sendUsername = async () => {
+  // wrapper that uses the shared network function
+  const handleLogin = async () => {
     try {
-      const res = await fetch('http://10.0.2.2:5000/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username: name,
-          password: password,
-        }),
-      });
-
-      const data = await res.json();
+      const data = await sendUsername(name, password);
       console.log('Response from server:', data);
+      setResponse(JSON.stringify(data));
     } catch (error) {
       console.error('Error sending data:', error);
       setResponse('Error sending data');
@@ -47,47 +41,23 @@ function App() {
       </View>
       <Title />
       <View style={{ marginTop: 20 }}>
-        <TextInput
-          style={{
-            marginTop: 20,
-            borderColor: 'gray',
-            marginHorizontal: 40,
-            borderWidth: 1,
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            borderRadius: 10,
-            backgroundColor: 'white',
-          }}
+        <TextField
           value={name}
-          onChangeText={value => {
-            setName(value);
-            // console.log(value);
-          }}
-          onFocus={() => setAutoFocus(true)} // Hide logo when focused
-          onBlur={() => setAutoFocus(false)}
+          onChangeText={value => setName(value)}
           placeholder="user name"
-        ></TextInput>
-        <TextInput
-          style={{
-            marginTop: 40,
-            borderColor: 'gray',
-            paddingVertical: 15,
-            marginHorizontal: 40,
-            borderWidth: 1,
-            paddingHorizontal: 20,
-            borderRadius: 10,
-            backgroundColor: 'white',
-          }}
-          value={password}
-          onChangeText={value => {
-            setPassword(value);
-            // console.log(value);
-          }}
-          secureTextEntry={true}
-          onFocus={() => setAutoFocus(true)} // Hide logo when focused
+          onFocus={() => setAutoFocus(true)}
           onBlur={() => setAutoFocus(false)}
+        />
+
+        <TextField
+          style={{ marginTop: 40 }}
+          value={password}
+          onChangeText={value => setPassword(value)}
           placeholder="Password"
-        ></TextInput>
+          secureTextEntry={true}
+          onFocus={() => setAutoFocus(true)}
+          onBlur={() => setAutoFocus(false)}
+        />
       </View>
       <View
         style={{
@@ -98,7 +68,7 @@ function App() {
         }}
       >
         <CustomButton
-          onPress={sendUsername}
+          onPress={handleLogin}
           title={'Login'}
           bgColor="#81C4FF"
         />
