@@ -15,10 +15,11 @@ const CustomButton = ({
       style={[
         {
           backgroundColor: bgColor,
-          width: 150,
-          padding: 10,
+          width: 310,
+          padding: 13,
           borderRadius: 10,
           alignItems: 'center',
+          marginVertical: 10,
         },
         buttonStyle,
       ]}

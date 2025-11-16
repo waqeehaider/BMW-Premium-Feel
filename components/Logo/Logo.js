@@ -7,8 +7,8 @@ const Logo = () => {
       resizeMode="contain"
       source={require('../../assets/images/carbody.png')}
       style={{
-        width: 700,
-        height: 300,
+        width: 500,
+        height: 200,
         alignSelf: 'center',
         marginTop: 30,
       }}

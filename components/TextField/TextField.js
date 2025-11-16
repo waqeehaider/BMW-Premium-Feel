@@ -1,17 +1,6 @@
 import React from 'react';
 import { TextInput } from 'react-native';
 
-/**
- * Reusable TextField component for single input.
- * Props:
- * - value
- * - onChangeText
- * - placeholder
- * - secureTextEntry (bool)
- * - autoFocus (bool)
- * - onFocus, onBlur
- * - style (object) to override/extend base style
- */
 const TextField = ({
   value,
   onChangeText,
@@ -23,7 +12,7 @@ const TextField = ({
   style,
 }) => {
   const baseStyle = {
-    marginTop: 20,
+    marginTop: 10,
     borderColor: 'gray',
     marginHorizontal: 40,
     borderWidth: 1,

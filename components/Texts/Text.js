@@ -7,7 +7,7 @@ export const Heading = ({ letter, color }) => {
   return (
     <Text
       style={{
-        fontSize: 44,
+        fontSize: 40,
         fontWeight: 'bold',
         fontStyle: 'italic',
         color: color, // use the prop here
